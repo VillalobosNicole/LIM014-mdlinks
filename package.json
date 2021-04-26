@@ -1,4 +1,40 @@
 {
   "name": "md-links",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "description": "* [1. Preámbulo](#1-preámbulo)\r * [2. Resumen del proyecto](#2-resumen-del-proyecto)\r * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)\r * [4. Consideraciones generales](#4-consideraciones-generales)\r * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)\r * [6. Entregables](#6-entregables)\r * [7. Hacker edition](#7-hacker-edition)\r * [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)\r * [9. Checklist](#9-checklist)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VillalobosNicole/LIM014-mdlinks.git"
+  },
+  "author": "Nicole Villalobos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VillalobosNicole/LIM014-mdlinks/issues"
+  },
+  "homepage": "https://github.com/VillalobosNicole/LIM014-mdlinks#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "eslint-gitignore": "^0.1.0",
+    "eslint-plugin-editorconfig": "^3.0.2",
+    "markdown-it": "^12.0.4",
+    "marked": "^2.0.3",
+    "node-fetch": "^2.6.1"
+  }
 }
