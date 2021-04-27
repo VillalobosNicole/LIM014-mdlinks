@@ -1,21 +1,30 @@
-const {existPath, absolutePath, convertToAbsolute, validatePath, readFile, arrayLinks, validate} = require('../app.js');
+const {
+  absolutePath,
+  readFile,
+  arrayLinks,
+  validate,
+  convertToAbsolute,
+  validatePath,
+} = require("./app.js");
+const pathRoute = process.argv[2];
 
-const mdLinks = require('md-links');
+const mdLinks = (path, options) => {
+  return new Promise((resolve, reject) => {
+    const absoltPath = absolutePath(path);
+    const readPath = readFile(path);
+    const convertPath = convertToAbsolute(path);
+    const validate = validatePath(path);
 
-mdLinks("./some/example.md")
-  .then(links => {
-    // => [{ href, text, file }]
-  })
-  .catch(console.error);
+    if (absoltPath == true) {
+      if(readPath){
+        resolve(validate)};
+    } else {
+        reject(convertPath);
+    }
+  });
+};
 
-mdLinks("./some/example.md", { validate: true })
-  .then(links => {
-    // => [{ href, text, file, status, ok }]
-  })
-  .catch(console.error);
-
-mdLinks("./some/dir")
-  .then(links => {
-    // => [{ href, text, file }]
-  })
-  .catch(console.error);
+mdLinks(pathRoute)
+  .then((absoltPath) => console.log('28',absoltPath))
+//   .then((convertPath) => console.log('29', convertPath))
+  .catch((err) => console.log('Archivo inválido'));

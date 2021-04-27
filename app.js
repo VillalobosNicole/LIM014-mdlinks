@@ -87,16 +87,24 @@ const validate = (route) => {
         statusText: res.statusText,
       };
       return status;
-    });
+    }).catch( (err) => {let status = {
+        href: element.href,
+        text: element.text,
+        file: element.file,
+        status: 500,
+        statusText: 'fail',
+    };
+    return status});
 
   });
   return Promise.all(totalArray)
 };
 validate(pathRoute).then(values => {
-  console.log(values)})
+  return values})
   .catch(err => console.log(err));
 
-
+  
+  
 
 module.exports = {
   existPath,
@@ -107,4 +115,3 @@ module.exports = {
   arrayLinks,
   validate
 };
-// C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\test
