@@ -78,40 +78,43 @@ const arrayLinks = (route) => {
 const validate = (route) => {
   const totalArray = arrayLinks(route).map((element) => {
     //console.log((element))
-    return fetch(element.href).then((res) => {
-      let status = {
-        href: element.href,
-        text: element.text,
-        file: element.file,
-        status: res.status,
-        statusText: res.statusText,
-      };
-      return status;
-    }).catch( (err) => {let status = {
-        href: element.href,
-        text: element.text,
-        file: element.file,
-        status: 500,
-        statusText: 'fail',
-    };
-    return status});
-
+    return fetch(element.href)
+      .then((res) => {
+        let status = {
+          href: element.href,
+          text: element.text,
+          file: element.file,
+          status: res.status,
+          statusText: res.statusText,
+        };
+        return status;
+      })
+      .catch((err) => {
+        let status = {
+          href: element.href,
+          text: element.text,
+          file: element.file,
+          status: 500,
+          statusText: "fail",
+        };
+        return status;
+      });
   });
-  return Promise.all(totalArray)
+  return Promise.all(totalArray);
 };
-validate(pathRoute).then(values => {
-  return values})
-  .catch(err => console.log(err));
-
-  
-  
+validate(pathRoute)
+  .then((values) => {
+    console.log( values);
+  })
+  .catch((err) => console.log(err));
 
 module.exports = {
   existPath,
   absolutePath,
   convertToAbsolute,
+  extension,
   validatePath,
   readFile,
   arrayLinks,
-  validate
+  validate,
 };

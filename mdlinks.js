@@ -3,28 +3,36 @@ const {
   readFile,
   arrayLinks,
   validate,
+  extension,
   convertToAbsolute,
-  validatePath,
 } = require("./app.js");
 const pathRoute = process.argv[2];
 
 const mdLinks = (path, options) => {
   return new Promise((resolve, reject) => {
-    const absoltPath = absolutePath(path);
-    const readPath = readFile(path);
-    const convertPath = convertToAbsolute(path);
-    const validate = validatePath(path);
+    let results = [];
+    let success = false;
+    if (!absolutePath(path)) {
+      path = convertToAbsolute(path);
+    } 
+   // console.log(path);
 
-    if (absoltPath == true) {
-      if(readPath){
-        resolve(validate)};
-    } else {
-        reject(convertPath);
+      if(readFile(path)){
+        console.log("paso lectura",extension(path) );
+        if(extension(path)){
+          results = validate(path)
+          success =true;
+        }
+    };
+
+    if(success){
+      resolve(results)
+    }else{
+      reject("Error de conversion")
     }
-  });
-};
+  }
+  )};
 
 mdLinks(pathRoute)
-  .then((absoltPath) => console.log('28',absoltPath))
-//   .then((convertPath) => console.log('29', convertPath))
-  .catch((err) => console.log('Archivo inválido'));
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
