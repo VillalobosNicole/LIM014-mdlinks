@@ -102,11 +102,11 @@ const validate = (route) => {
   });
   return Promise.all(totalArray);
 };
-validate(pathRoute)
+/* validate(pathRoute)
   .then((values) => {
-    console.log( values);
+    return( values);
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log(err)); */
 
 module.exports = {
   existPath,

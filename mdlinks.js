@@ -18,21 +18,30 @@ const mdLinks = (path, options) => {
    // console.log(path);
 
       if(readFile(path)){
-        console.log("paso lectura",extension(path) );
+        //console.log("paso lectura",extension(path) );
         if(extension(path)){
+          if (options.validate == true){
           results = validate(path)
           success =true;
+          } else {
+            results = arrayLinks(path)
+            success =true;
+          }
         }
     };
 
     if(success){
       resolve(results)
     }else{
-      reject("Error de conversion")
+      reject("Error")
     }
   }
   )};
 
-mdLinks(pathRoute)
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
+mdLinks(pathRoute, {validate : true})
+  // .then((res) => console.log(res))
+  // .catch((err) => console.log(err));
+
+  module.exports= {
+    mdLinks
+  }
