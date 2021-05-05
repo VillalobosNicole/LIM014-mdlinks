@@ -1,54 +1,89 @@
-const {existPath, absolutePath, convertToAbsolute, validatePath, readFile} = require('../app.js');
+const {
+  existPath,
+  absolutePath,
+  convertToAbsolute,
+  validatePath,
+  readFile,
+  arrayLinks,
+} = require("../app.js");
 
-describe('mdLinks', () => {
-  it('Is a function', () => {
-    expect(typeof existPath).toBe('function');
+describe("mdLinks", () => {
+  it("Is a function", () => {
+    expect(typeof existPath).toBe("function");
   });
-  test('Check if path exist', () => {
-    expect(existPath('C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\test')).toBe(true);
+  test("Check if path exist", () => {
+    expect(
+      existPath("C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\test")
+    ).toBe(true);
   });
-  test('Check if path not exist', () => {
-    expect(existPath('C:\\Users\\N15\\Desktop\\Laboratoria\\LIM01')).toBe(false);
+  test("Check if path not exist", () => {
+    expect(existPath("C:\\Users\\N15\\Desktop\\Laboratoria\\LIM01")).toBe(
+      false
+    );
   });
 });
 
-describe('mdLinks', () => {
-  it('Is a function', () => {
-    expect(typeof absolutePath).toBe('function');
+describe("mdLinks", () => {
+  it("Is a function", () => {
+    expect(typeof absolutePath).toBe("function");
   });
-  test('Check if path is absolute', () => {
-    expect(absolutePath('C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\test')).toBe(true);
+  test("Check if path is absolute", () => {
+    expect(
+      absolutePath("C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\test")
+    ).toBe(true);
   });
-  test('Check if path is not absolute', () => {
-    expect(absolutePath('README.md')).toBe(false);
-  });
-});
-
-describe('mdLinks', () => {
-  test('Is a function', () => {
-    expect(typeof convertToAbsolute).toBe('function');
-  });
-  test('Convert the relative path to absolute', () => {
-    expect(convertToAbsolute('index.js')).toEqual('C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\index.js');
+  test("Check if path is not absolute", () => {
+    expect(absolutePath("README.md")).toBe(false);
   });
 });
 
-describe('mdLinks', () => {
-  test('Is a function', () => {
-    expect(typeof validatePath).toBe('function');
+describe("mdLinks", () => {
+  test("Is a function", () => {
+    expect(typeof convertToAbsolute).toBe("function");
   });
-
-test('It should return an absolute path', () => {
-  expect(validatePath('index.js')).toEqual('C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\index.js');
-})
+  test("Convert the relative path to absolute", () => {
+    expect(convertToAbsolute("examplefile.md")).toEqual(
+      "C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\examplefile.md"
+    );
+  });
 });
 
-describe('mdLinks', () => {
-  test('Is a function', () => {
-    expect(typeof readFile).toBe('function');
+describe("mdLinks", () => {
+  test("Is a function", () => {
+    expect(typeof validatePath).toBe("function");
   });
-test('It s', () => {
-  expect(readFile('C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\README.md')).toMatch('# Markdown Links');
-})
+
+  test("It should return an absolute path", () => {
+    expect(validatePath("examplefile.md")).toEqual(
+      "C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\examplefile.md"
+    );
+  });
 });
 
+describe("mdLinks", () => {
+  test("Is a function", () => {
+    expect(typeof readFile).toBe("function");
+  });
+  test("It is a markdown file", () => {
+    expect(
+      readFile(
+        "C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\README.md"
+      )
+    ).toMatch("# Markdown Links");
+  });
+});
+
+describe("mdLinks", () => {
+  test("Is a function", () => {
+    expect(typeof arrayLinks).toBe("function");
+  });
+  test("Is a  function", () => {
+    expect(
+      Array.isArray(
+        arrayLinks(
+          "C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\README.md"
+        )
+      )
+    ).toBe(true);
+  });
+});

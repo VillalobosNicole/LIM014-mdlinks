@@ -4,7 +4,6 @@ const pathRoute = process.argv[2];
 const fs = require("fs");
 const path = require("path");
 const marked = require("marked");
-const { Renderer } = require("marked");
 const fetch = require("node-fetch");
 const regex = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
 
@@ -48,14 +47,6 @@ const readFile = (route) => {
   }
 };
 
-/* const read = (route) => fs.readFileSync((route),
-  { encoding: 'utf8', flag: 'r' }); */
-// console.log(read(pathRoute));
-
-//console.log(readFile('C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\README.md'));
-
-// C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\examplefile.md
-
 //tomando links
 const arrayLinks = (route) => {
   const renderer = new marked.Renderer(); // sólo funciona con const renderer
@@ -89,7 +80,7 @@ const validate = (route) => {
         };
         return status;
       })
-      .catch((err) => {
+      .catch(() => {
         let status = {
           href: element.href,
           text: element.text,
