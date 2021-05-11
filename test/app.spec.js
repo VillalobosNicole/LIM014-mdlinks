@@ -58,6 +58,11 @@ describe("mdLinks", () => {
       "C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\examplefile.md"
     );
   });
+  test("Check if path not exist", () => {
+    expect(validatePath("C:\\Users\\N15\\Desktop\\Laboratoria\\LIM01")).toBe(
+      "no existe ruta"
+    );
+  });
 });
 
 describe("mdLinks", () => {
@@ -71,6 +76,16 @@ describe("mdLinks", () => {
       )
     ).toMatch("# Markdown Links");
   });
+  test("It is a markdown file", () => {
+    /* console.log(readFile(
+      "C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\app.js"
+    )); */
+    expect(
+      readFile(
+        "C:\\Users\\N15\\Desktop\\Laboratoria\\LIM014-mdlinks\\app.js"
+      )
+    ).toBe("No es archivo de extensión .md");
+  })
 });
 
 describe("mdLinks", () => {
@@ -86,4 +101,5 @@ describe("mdLinks", () => {
       )
     ).toBe(true);
   });
+  
 });

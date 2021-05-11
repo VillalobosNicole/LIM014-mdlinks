@@ -21,6 +21,8 @@ const validatePath = (route) => {
     if (absolutePath(route) === true) {
       return route;
     } else return convertToAbsolute(route);
+  } else {
+     return "no existe ruta"
   }
 };
 //console.log("25", validatePath(pathRoute));
